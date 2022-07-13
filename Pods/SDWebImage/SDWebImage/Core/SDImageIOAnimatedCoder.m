@@ -206,12 +206,16 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
     }
 
     NSMutableDictionary *decodingOptions;
+    NSMutableDictionary *anotherOptions;
     if (options) {
         decodingOptions = [NSMutableDictionary dictionaryWithDictionary:options];
+        anotherOptions = [NSMutableDictionary dictionaryWithDictionary:options];
     } else {
         decodingOptions = [NSMutableDictionary dictionary];
+        anotherOptions = [NSMutableDictionary dictionary];
     }
     CGImageRef imageRef;
+    CGImageRef thumbnailImageRef;
     BOOL createFullImage = thumbnailSize.width == 0 || thumbnailSize.height == 0 || pixelWidth == 0 || pixelHeight == 0 || (pixelWidth <= thumbnailSize.width && pixelHeight <= thumbnailSize.height);
     if (createFullImage) {
         if (isVector) {
@@ -229,8 +233,10 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
             NSUInteger DPIPerPixel = 2;
             NSUInteger rasterizationDPI = maxPixelSize * DPIPerPixel;
             decodingOptions[kSDCGImageSourceRasterizationDPI] = @(rasterizationDPI);
+            anotherOptions[(__bridge NSString *)kCGImageSourceThumbnailMaxPixelSize] = @(rasterizationDPI);
         }
         imageRef = CGImageSourceCreateImageAtIndex(source, index, (__bridge CFDictionaryRef)[decodingOptions copy]);
+        thumbnailImageRef = CGImageSourceCreateThumbnailAtIndex(source, index, (__bridge CFDictionaryRef)[anotherOptions copy]);
     } else {
         decodingOptions[(__bridge NSString *)kCGImageSourceCreateThumbnailWithTransform] = @(preserveAspectRatio);
         CGFloat maxPixelSize;

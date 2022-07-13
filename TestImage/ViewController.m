@@ -6,7 +6,8 @@
 //
 
 #import "ViewController.h"
-#import "UIImage+MultiFormat.h"
+#import <SDWebImage/SDWebImage.h>
+#import <SDWebImagePDFCoder/SDImagePDFCoder.h>
 
 @interface ViewController ()
 
@@ -30,6 +31,7 @@
 - (void)loadImage:(id)sender {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"77778be556396754169c81b2930f5c9d857" ofType:@"ai"];
     NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+//    [[SDImageCodersManager sharedManager] addCoder:[SDImagePDFCoder sharedCoder]];
     UIImage *image = [UIImage sd_imageWithData:data];
     self.imageView.image = image;
 }

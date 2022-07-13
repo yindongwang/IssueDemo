@@ -2,17 +2,22 @@ PODS:
   - SDWebImage (5.13.0):
     - SDWebImage/Core (= 5.13.0)
   - SDWebImage/Core (5.13.0)
+  - SDWebImagePDFCoder (0.8.0):
+    - SDWebImage (~> 5.10)
 
 DEPENDENCIES:
   - SDWebImage (= 5.13.0)
+  - SDWebImagePDFCoder
 
 SPEC REPOS:
   trunk:
     - SDWebImage
+    - SDWebImagePDFCoder
 
 SPEC CHECKSUMS:
   SDWebImage: 0327043dbb9533e75f2eff8445b3df0f2ceca6ac
+  SDWebImagePDFCoder: 999ba0184a07bbaffb73484b169ca01d25d64562
 
-PODFILE CHECKSUM: 9b761584c6192ac529a67cacfdf8b562ae45b258
+PODFILE CHECKSUM: 9c887f77b5d5f58097e909874a5d6f68fe8b9be2
 
 COCOAPODS: 1.10.2

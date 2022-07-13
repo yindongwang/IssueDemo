@@ -7,4 +7,5 @@ target 'TestImage' do
 
   # Pods for TestImage
 pod 'SDWebImage', '5.13.0'
+pod 'SDWebImagePDFCoder'
 end
